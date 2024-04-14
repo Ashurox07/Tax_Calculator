@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tax Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Tax Calculator</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form id="taxForm">
+          <div class="form-group">
+            <label for="grossIncome">
+              Gross Annual Income 
+              <span class="question-mark" data-toggle="tooltip" data-placement="right" title="Click to see message" onclick="showMessage()">
+                <i class="fas fa-question-circle"></i>
+              </span>
+            </label>
+            <input type="text" class="form-control" id="grossIncome" pattern="[0-9]*" placeholder="Enter gross annual income" required>
+            <div class="error-icon" id="grossIncomeError">
+              <img src="error_icon.png" alt="Error" width="20">
+              
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="extraIncome">Extra Income</label>
+            <span class="question-mark" data-toggle="tooltip" data-placement="right" title="Click to see message" onclick="">
+                <i class="fas fa-question-circle"></i>
+            <input type="number" class="form-control" id="extraIncome" min="0" placeholder="Enter extra income for other sources" required>
+            <div class="error-icon" id="extraIncomeError">
+              <img src="error_icon.png" alt="Error" width="20">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="age">Age Group</label>
+            <select class="form-control" id="age" required>
+              <option value="" selected disabled>Select Age Group</option>
+              <option value="40">&lt;40</option>
+              <option value="40-60">&ge;40 &lt;60</option>
+              <option value="60+">&ge;60</option>
+            </select>
+            <div class="error-icon" id="ageError">
+              <img src="error_icon.png" alt="Error" width="20">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="deductions">Total Applicable Deductions</label>
+            <span class="question-mark" data-toggle="tooltip" data-placement="right" title="Click to see message" onclick="">
+                <i class="fas fa-question-circle"></i>
+            <input type="number" class="form-control" id="deductions" min="0" placeholder="Add total applicable deductions" required>
+            <div class="error-icon" id="deductionsError">
+              <img src="error_icon.png" alt="Error" width="20">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tax Calculation Result</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="resultText"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="scripts.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    function showMessage() {
+      alert("Gross Annual income is your total salary in a year before any deductions");
+    }
+  </script>
+</body>
+</html>
